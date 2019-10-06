@@ -1,11 +1,11 @@
 const GET_JOBS_LIST = 'GET_JOBS_LIST'
-const CREATE_JOBS = 'CREATE_JOBS'
+const CREATE_JOB = 'CREATE_JOB'
 const DELETE_JOB = 'DELETE_JOB'
 const GET_JOB_ID = 'GET_JOB_ID'
 
 let initialState = {
     jobsList: [],
-    jobsId: [],
+    jobId: [],
     isJobItem: false
 }
 
@@ -17,7 +17,7 @@ const Reducer = (state = initialState, action) => {
                 jobsList: action.payload,
                 isJobItem: true
             }
-        case CREATE_JOBS:
+        case CREATE_JOB:
             return {
                 ...state,
                 jobsList: [...state.jobsList, action.payload]
@@ -30,7 +30,7 @@ const Reducer = (state = initialState, action) => {
         case GET_JOB_ID:
             return {
                 ...state,
-                jobsId: action.payload,
+                jobId: action.payload,
                 isJobItem: false
             }
         default:

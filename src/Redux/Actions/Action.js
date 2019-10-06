@@ -1,4 +1,4 @@
-import { jobsAPI } from "../../api/api"
+import { jobsAPI } from '../../api/api'
 
 export const getJobsList = () => {
     return (dispatch) => {
@@ -21,7 +21,6 @@ export const getJobId = (id) => {
         jobsAPI.get(`${jobsAPI.url}/${id}`)
             .then((response) => {
                 const data = response.data
-                console.log('zzz',data)
                 dispatch({
                     type: 'GET_JOB_ID',
                     payload: data,
@@ -39,7 +38,7 @@ export const createJob = (data) => {
             .then((response) => {
                 const data = response.data
                 dispatch({
-                    type: 'CREATE_JOBS',
+                    type: 'CREATE_JOB',
                     payload: data,
                 })
             })

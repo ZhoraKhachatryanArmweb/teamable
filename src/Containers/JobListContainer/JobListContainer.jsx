@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
-import { connect } from "react-redux"
-import { bindActionCreators } from "redux"
-import { actions } from "../../Redux/Actions"
-import Button from '@material-ui/core/Button'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actions } from '../../Redux/Actions'
 import JobList from '../../Components/JobList/JobList'
-import CreateJob from "../../Components/CreateJob/CreateJob"
-import JobItem from "../../Components/JobItem/JobItem";
+import JobItem from '../../Components/JobItem/JobItem'
 import PropTypes from 'prop-types'
 
 const styles = theme => ({
@@ -16,12 +14,15 @@ const styles = theme => ({
         flexGrow: 1
     },
     paper: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(),
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
     card: {
         minWidth: 275,
+        padding: 20,
+        marginTop: 10,
+        marginBottom: 10
     },
     title: {
         fontSize: 14,
@@ -48,24 +49,13 @@ const styles = theme => ({
 
 class JobListContainer extends Component {
 
-    state = {
-        createJobFields: false
-    }
-
     componentDidMount() {
         const { actions } = this.props
         actions.getJobsList()
     }
 
-    createJobHandler = () => {
-        this.setState({
-            createJobFields: true
-        })
-    }
-
     render() {
-        const { classes, jobsList, jobsId, isJobItem, actions } = this.props
-        const { createJobFields } = this.state
+        const { classes, jobsList, jobId, isJobItem, actions } = this.props
         return (
             <div className={classes.root}>
                 <Grid container spacing={3}>
@@ -79,25 +69,14 @@ class JobListContainer extends Component {
                                     jobsList={jobsList}
                                     classes={classes}
                                     deleteJob={actions.deleteJob}
+                                    createJob={actions.createJob}
                                 />
                                 :
                                 <JobItem
-                                     jobsId={jobsId}
+                                    jobId={jobId}
                                      classes={classes}
                                      getJobsList={actions.getJobsList}
                                  />
-                            }
-                            {
-                                createJobFields
-                                ?
-                                <CreateJob
-                                    createJob={actions.createJob}
-                                    classes={classes}
-                                />
-                                :
-                                <Button variant="contained" color="primary" className={classes.button} onClick={this.createJobHandler}>
-                                    Create Job
-                                </Button>
                             }
                         </Paper>
                     </Grid>
@@ -110,7 +89,7 @@ class JobListContainer extends Component {
 const mapStateToProps = (store) => {
     return {
         jobsList: store.settings.Reducer.jobsList,
-        jobsId: store.settings.Reducer.jobsId,
+        jobId: store.settings.Reducer.jobId,
         isJobItem: store.settings.Reducer.isJobItem,
     }
 }
@@ -128,7 +107,7 @@ JobListContainer.propTypes  = {
     actions: PropTypes.object,
     classes: PropTypes.object,
     jobsList: PropTypes.array,
-    jobsId: PropTypes.array,
+    jobId: PropTypes.array,
     isJobItem: PropTypes.bool
 }
 

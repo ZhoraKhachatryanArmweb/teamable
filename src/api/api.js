@@ -5,7 +5,7 @@ export const jobsAPI = {
     get: url => {
         return new Promise((resolve, reject) => {
             let headers = {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             }
             axios.get(url, {
                 headers: headers
@@ -17,7 +17,7 @@ export const jobsAPI = {
     post: (url, data) => {
         return new Promise((resolve, reject) => {
             let headers = {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             }
             axios.post(url, data, {
                 headers: headers
@@ -29,7 +29,7 @@ export const jobsAPI = {
     delete: (url) => {
         return new Promise((resolve, reject) => {
             let headers = {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             }
             axios.delete(url,{
                 headers: headers

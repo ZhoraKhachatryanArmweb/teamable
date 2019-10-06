@@ -1,5 +1,5 @@
 import React from 'react'
-import JobListContainer from "./Containers/JobListContainer/JobListContainer"
+import JobListContainer from './Containers/JobListContainer/JobListContainer'
 import Container from '@material-ui/core/Container'
 
 const App = () => {

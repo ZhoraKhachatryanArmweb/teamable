@@ -11,20 +11,20 @@ class JobItem extends Component {
     }
 
     render() {
-        const { classes, jobsId } = this.props
+        const { classes, jobId } = this.props
         return (
             <>
                 <Button variant="contained" className={classes.button} onClick={() => this.jobsList()}>Jobs list</Button>
                 <Card className={classes.card}>
                     <CardContent>
                         <Typography variant="h5" component="h4">
-                            {jobsId.title}
+                            {jobId.title}
                         </Typography>
                         <Typography component="div">
-                            {jobsId.bonus} $<br/>
-                            {jobsId.location} <br/>
+                            {jobId.bonus} $<br/>
+                            {jobId.location} <br/>
                             {
-                                jobsId.urgent
+                                jobId.urgent
                                     ?
                                     <div style={{background: 'green', height: '10px', width: '50px', display: 'inline-block'}}></div>
                                     :
